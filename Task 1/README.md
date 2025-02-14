@@ -74,7 +74,4 @@ This project sets up a Kubernetes environment with a jekyll pod, persistent stor
     - Create the developer-role with all permissions for services, PVCs, and pods in the development namespace.
     - Bind the developer-role to the user martin via the developer-rolebinding.
 
-## Notes
-- Ensure the Kubernetes cluster is configured to support ReadWriteMany access mode for the PersistentVolume.
-- Adjust the storage request as necessary based on your use case.
-- Check the pod's logs to ensure the Jekyll site is being correctly created in the /site volume.
+
