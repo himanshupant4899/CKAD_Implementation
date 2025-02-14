@@ -1,5 +1,7 @@
 # CKAD_Implementation_1
 
+![Challenge 1](Task1.png)
+
 # Jekyll Kubernetes Setup
 
 This project sets up a Kubernetes environment with a jekyll pod, persistent storage, service configuration, and RBAC settings for managing resources in the development namespace.
