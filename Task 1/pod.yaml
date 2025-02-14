@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: jekyll
+  name: jekyll
+spec:
+  containers:
+  - image: gcr.io/kodekloud/customimage/jekyll-serve
+    name: jekyll
+    resources: {}
+    volumeMounts:
+    - name: site
+      mountPath: /site
+  initContainers:
+  - name: copy-jekyll-site
+    image: gcr.io/kodekloud/customimage/jekyll
+    command: [ "jekyll", "new", "/site" ]
+    volumeMounts:
+    - name: site
+      mountPath: /site
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  volumes:
+  - name: site
+    persistentVolumeClaim:
+      claimName: jekyll-site
+status: {}
+
+
+
+
+# pod: 'jekyll' has an initContainer, name: 'copy-jekyll-site', image: 'gcr.io/kodekloud/customimage/jekyll'
+
+# initContainer: 'copy-jekyll-site', command: [ "jekyll", "new", "/site" ] (command to run: jekyll new /site)
+
+# pod: 'jekyll', initContainer: 'copy-jekyll-site', mountPath = '/site'
+
+# pod: 'jekyll', initContainer: 'copy-jekyll-site', volume name = 'site'
+
+# pod: 'jekyll', container: 'jekyll', volume name = 'site'
+
+# pod: 'jekyll', container: 'jekyll', mountPath = '/site'
+
+# pod: 'jekyll', container: 'jekyll', image = 'gcr.io/kodekloud/customimage/jekyll-serve'
+
+# pod: 'jekyll', uses volume called 'site' with pvc = 'jekyll-site'
+
+# pod: 'jekyll' uses label 'run=jekyll'
