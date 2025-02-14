@@ -20,4 +20,6 @@ status:
   loadBalancer: {}
 
 
-  k config set-context developer --cluster=kubernetes --user=martin 
+  #k config set-context developer --cluster=kubernetes --user=martin --namespace=development
+  #k config use-context developer
+  #k config set-credentials martin --client-certificate=/root/martin.crt --client-key=/root/martin.key --embed-certs=false
